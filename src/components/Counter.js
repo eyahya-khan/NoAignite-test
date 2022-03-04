@@ -15,14 +15,12 @@ const Display = styled.div`
 const DisplayInline = styled.div`
   display: flex;
   flex-direction: column;
-
   margin: 70px 0px;
 
   @media ${device.tablet} {
     max-width: 80%;
     margin-left: 10%;
     margin-top: 90px;
-
 
     flex-direction: row;
     justify-content: space-between;
@@ -81,21 +79,25 @@ const ButtonDecrement = styled.button`
 `;
 
 const Title = styled.p`
-  display:flex;
-  flex-direction:column;
-  justify-content:flext-start;
+  display: flex;
+  flex-direction: column;
+  justify-content: flext-start;
 
-  padding:10px;
+  padding: 10px;
   font-size: 20px;
   font-weight: 200;
   text-align: center;
   background-color: #ffffff;
 `;
+const Spansign = styled.span`
+  font-size: 24px;
+  font-weight: 700;
+  padding: 5px;
+`;
 
 const Span = styled.span`
-  padding:10px;
-  line-height:1.5em;
-
+  padding: 10px;
+  line-height: 1.5em;
 `;
 
 function Counter() {
@@ -147,35 +149,48 @@ function Counter() {
   return (
     <Display>
       <DisplayInline>
-        <ButtonDecrement primary onClick={decrement}>
-          - DECREMENT
+        <ButtonDecrement 
+          primary 
+          onClick={decrement}
+          disabled={count === 0 ? true : false}
+          > 
+         <Spansign>-</Spansign> DECREMENT
         </ButtonDecrement>
 
         <Title>Count: {count}</Title>
 
-        <ButtonIncrement primary onClick={increment}>
-          <Span>+</Span> INCREMENT
+        <ButtonIncrement 
+          primary 
+          onClick={increment}
+          disabled={count === repoList.length - 1 ? true : false}
+          >
+          <Spansign>+</Spansign>INCREMENT
         </ButtonIncrement>
       </DisplayInline>
 
       {isLoading && <BeatLoader color="green" loading />}
 
-      {error === post ? error : null}
+      {error === post ? 
+      <Title>
+      {error }
+      </Title>
+      : 
 
       <Title>
-      <Span>
-        <strong>Title: </strong>
-        {post.full_name}
+        <Span>
+          <strong>Title: </strong>
+          {post.full_name}
         </Span>
-          <Span>
-        <strong>Description: </strong>
-        {post.description}
-        </Span>  
-      <Span>
-        <strong>Amounts of stars: </strong>
-        {post.stargazers_count}
-      </Span>
+        <Span>
+          <strong>Description: </strong>
+          {post.description}
+        </Span>
+        <Span>
+          <strong>Amounts of stars: </strong>
+          {post.stargazers_count}
+        </Span>
       </Title>
+}
     </Display>
   );
 }
