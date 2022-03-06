@@ -17,26 +17,22 @@ export const DisplayInline = styled.div`
 
   @media ${device.tablet} {
     max-width: 605px;
-    margin-left: 10%;
-    margin-top: 90px;
+    margin:0 auto;
 
     flex-direction: row;
     justify-content: space-between;
   }
 
   @media ${device.laptop} {
-    margin-left: 20%;
-    margin-top: 15%;
+    margin:0 auto;
   }
 
   @media ${device.laptopL} {
-    margin-left: 25%;
-    margin-top: 15%;
+    margin:0 auto;
   }
 
   @media ${device.desktop} {
-    margin-left: 35%;
-    margin-top: 15%;
+    margin:0 auto;
   }
 `;
 

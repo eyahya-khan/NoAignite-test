@@ -51,6 +51,7 @@ function Counter() {
       });
   }, [count]);
 
+
   return (
     <Display>
       <DisplayInline>
@@ -72,15 +73,15 @@ function Counter() {
           <Spansign>+</Spansign>INCREMENT
         </ButtonIncrement>
       </DisplayInline>
+    
 
-      {isLoading && <BeatLoader color="green" loading />}
+         {<BeatLoader color="green" loading ={isLoading} />}
+      
 
-      {error === post ? 
-      <Title>
-      {error }
-      </Title>
-      : 
-
+    { !isLoading &&
+      (error === post ? (
+      <Title>{error }</Title>)
+      : (
       <Title>
         <Span>
           <strong>Title: </strong>
@@ -95,7 +96,8 @@ function Counter() {
           {post.stargazers_count}
         </Span>
       </Title>
-}
+      ))}
+
     </Display>
   );
 }
